@@ -231,7 +231,7 @@ public final class HorizontalPager extends ViewGroup {
                      * take the remainder of all touch events in onTouchEvent.
                      */
                     if (scrollable != null) {
-                        if (scrollable.isHittingEdge() && !scrollable.isScrollable()) {
+                        if (scrollable.isHittingEdge(0) && !scrollable.isScrollable()) {
                             intercept = true;
                         }
                     } else {
@@ -240,7 +240,7 @@ public final class HorizontalPager extends ViewGroup {
                 } else if (mTouchState == TOUCH_STATE_VERTICAL_SCROLLING) {
                     // Let children handle the events for the duration of the scroll event.
                     if (scrollable != null) {
-                        if (scrollable.isHittingEdge() && !scrollable.isScrollable()) {
+                        if (scrollable.isHittingEdge(0) && !scrollable.isScrollable()) {
                             intercept = true;
                         } else {
                             intercept = false;

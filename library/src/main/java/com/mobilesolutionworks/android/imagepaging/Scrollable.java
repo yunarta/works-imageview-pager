@@ -5,7 +5,7 @@ package com.mobilesolutionworks.android.imagepaging;
  */
 public interface Scrollable {
 
-    boolean isHittingEdge();
+    boolean isHittingEdge(int direction);
 
     boolean isScrollable();
 }

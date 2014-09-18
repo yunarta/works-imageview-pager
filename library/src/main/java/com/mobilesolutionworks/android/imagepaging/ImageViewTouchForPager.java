@@ -23,13 +23,29 @@ public class ImageViewTouchForPager extends ImageViewTouch implements Scrollable
     }
 
     @Override
-    public boolean isHittingEdge() {
+    public boolean isHittingEdge(int direction) {
         RectF rect = getBitmapRect();
-        return (int) rect.right <= getWidth() || (int) rect.left >= 0;
+        if (rect == null) return true;
+
+//        Log.d("[pager]", "isHittingEdge direction = " + direction);
+        if (direction > 0) {
+            boolean b = (int) rect.right <= getWidth();
+//            Log.d("[pager]", "isHittingEdge right result = " + b);
+
+            return b;
+        } else {
+            boolean b = (int) rect.left >= 0;
+//            Log.d("[pager]", "isHittingEdge left result = " + b);
+
+            return b;
+        }
     }
 
     @Override
     public boolean isScrollable() {
-        return !mScaleDetector.isInProgress();
+        boolean b = !mScaleDetector.isInProgress();
+//        Log.d("[pager]", "isScrollable = " + b);
+
+        return b;
     }
 }
