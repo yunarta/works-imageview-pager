@@ -25,9 +25,8 @@ public abstract class ImagePagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-//        ImageViewPager pager = (ImageViewPager) container;
-
         ImageViewTouchForPager imageView = new ImageViewTouchForPager(mContext);
+
         mImageViewPagerMap.put(position, imageView);
 
         container.addView(imageView);
