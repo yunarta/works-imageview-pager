@@ -11,7 +11,7 @@ import it.sephiroth.android.library.imagezoom.ImageViewTouch;
 public class ImageViewTouchForPager extends ImageViewTouch implements Scrollable {
 
     public ImageViewTouchForPager(Context context) {
-        super(context);
+        super(context, null);
     }
 
     public ImageViewTouchForPager(Context context, AttributeSet attrs) {
