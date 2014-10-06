@@ -3,12 +3,11 @@ package com.mobilesolutionworks.android.imagepaging;
 import android.content.Context;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import it.sephiroth.android.library.imagezoom.ImageViewTouch;
 
 /**
  * Created by yunarta on 18/9/14.
  */
-public class ImageViewTouchForPager extends ImageViewTouch implements Scrollable {
+public class ImageViewTouchForPager extends TouchImageView implements Scrollable {
 
     public ImageViewTouchForPager(Context context) {
         super(context, null);
@@ -24,7 +23,7 @@ public class ImageViewTouchForPager extends ImageViewTouch implements Scrollable
 
     @Override
     public boolean isHittingEdge(int direction) {
-        RectF rect = getBitmapRect();
+        RectF rect = getZoomedRect();
         if (rect == null) return true;
 
 //        Log.d("[pager]", "isHittingEdge direction = " + direction);
@@ -43,9 +42,9 @@ public class ImageViewTouchForPager extends ImageViewTouch implements Scrollable
 
     @Override
     public boolean isScrollable() {
-        boolean b = !mScaleDetector.isInProgress();
+//        boolean b = !mScaleDetector.isInProgress();
 //        Log.d("[pager]", "isScrollable = " + b);
 
-        return b;
+        return true;
     }
 }
