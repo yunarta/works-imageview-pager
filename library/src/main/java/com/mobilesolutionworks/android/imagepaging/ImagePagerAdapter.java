@@ -2,7 +2,6 @@ package com.mobilesolutionworks.android.imagepaging;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +53,6 @@ public abstract class ImagePagerAdapter extends PagerAdapter {
     @Override
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
         super.setPrimaryItem(container, position, object);
-        Log.d("[journeyful]", "ImagePagerAdapter.setPrimaryItem");
 
         ImageViewTouchForPager pager;
 

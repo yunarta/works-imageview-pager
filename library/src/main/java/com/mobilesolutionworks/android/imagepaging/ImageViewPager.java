@@ -1853,11 +1853,9 @@ public class ImageViewPager extends ViewGroup {
                 final float yDiff = Math.abs(y - mInitialMotionY);
                 if (DEBUG) Log.v(TAG, "Moved x to " + x + "," + y + " diff=" + xDiff + "," + yDiff);
 
-                Log.d("[pager]", "ImageViewPager.onInterceptTouchEvent test gutter = " + (!isGutterDrag(mLastMotionX, dx)));
                 if (dx != 0 && !isGutterDrag(mLastMotionX, dx) &&
                         canScroll(this, false, (int) dx, (int) x, (int) y)) {
                     // Nested view has scrollable area under this point. Let it be handled there.
-                    Log.d("[pager]", "ImageViewPager.onInterceptTouchEvent unable to drag");
                     mLastMotionX = x;
                     mLastMotionY = y;
                     mIsUnableToDrag = true;
@@ -1865,7 +1863,6 @@ public class ImageViewPager extends ViewGroup {
                 }
                 if (xDiff > mTouchSlop && xDiff * 0.5f > yDiff) {
                     if (DEBUG) Log.v(TAG, "Starting drag!");
-                    Log.d("[pager]", "ImageViewPager.onInterceptTouchEvent start drag");
 //                    if (mAdapter != null) {
 //                        if (mAdapter.allowPageScroll(getCurrentItem())) {
 //                            mIsBeingDragged = true;
