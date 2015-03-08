@@ -16,6 +16,8 @@
 
 package com.mobilesolutionworks.android.imagepaging;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -1373,6 +1375,7 @@ public class ImageViewPager extends ViewGroup {
         mFirstLayout = true;
     }
 
+    @SuppressLint("RtlHardcoded")
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // For simple implementation, our internal size is always 0.
@@ -1507,6 +1510,7 @@ public class ImageViewPager extends ViewGroup {
         }
     }
 
+    @SuppressLint("RtlHardcoded")
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         final int count = getChildCount();
@@ -1681,6 +1685,7 @@ public class ImageViewPager extends ViewGroup {
      * @param offset       Value from [0, 1) indicating the offset from the page at position.
      * @param offsetPixels Value in pixels indicating the offset from position.
      */
+    @SuppressLint("RtlHardcoded")
     protected void onPageScrolled(int position, float offset, int offsetPixels) {
         // Offset any decor views if needed - keep them on-screen at all times.
         if (mDecorChildCount > 0) {
@@ -2788,6 +2793,7 @@ public class ImageViewPager extends ViewGroup {
         return new LayoutParams(getContext(), attrs);
     }
 
+    @TargetApi(14)
     class MyAccessibilityDelegate extends AccessibilityDelegateCompat {
 
         @Override

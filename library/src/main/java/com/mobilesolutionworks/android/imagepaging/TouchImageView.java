@@ -12,6 +12,7 @@
 
 package com.mobilesolutionworks.android.imagepaging;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -821,6 +822,7 @@ public class TouchImageView extends ImageView {
         //
         private PointF last = new PointF();
 
+        @SuppressLint("ClickableViewAccessibility")
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             mScaleDetector.onTouchEvent(event);
