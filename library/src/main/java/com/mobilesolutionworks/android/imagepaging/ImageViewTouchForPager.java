@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 /**
  * Created by yunarta on 18/9/14.
  */
-public class ImageViewTouchForPager extends TouchImageView implements Scrollable {
+public class ImageViewTouchForPager extends ImageViewTouch implements Scrollable {
 
     public ImageViewTouchForPager(Context context) {
         super(context, null);
@@ -25,18 +25,10 @@ public class ImageViewTouchForPager extends TouchImageView implements Scrollable
     public boolean isHittingEdge(int direction) {
         RectF rect = getZoomedRect();
         if (rect == null) return true;
-
-//        Log.d("[pager]", "isHittingEdge direction = " + direction);
         if (direction > 0) {
-            boolean b = (int) rect.right <= getWidth();
-//            Log.d("[pager]", "isHittingEdge right result = " + b);
-
-            return b;
+            return (int) rect.right <= getWidth();
         } else {
-            boolean b = (int) rect.left >= 0;
-//            Log.d("[pager]", "isHittingEdge left result = " + b);
-
-            return b;
+            return (int) rect.left >= 0;
         }
     }
 

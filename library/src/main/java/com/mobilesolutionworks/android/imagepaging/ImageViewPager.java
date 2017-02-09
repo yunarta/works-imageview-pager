@@ -35,6 +35,7 @@ import android.support.v4.os.ParcelableCompatCreatorCallbacks;
 import android.support.v4.view.AccessibilityDelegateCompat;
 import android.support.v4.view.KeyEventCompat;
 import android.support.v4.view.MotionEventCompat;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.VelocityTrackerCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewConfigurationCompat;
@@ -66,7 +67,7 @@ import java.util.Comparator;
 /**
  * Layout manager that allows the user to flip left and right
  * through pages of data.  You supply an implementation of a
- * {@link ImagePagerAdapter} to generate the pages that the view shows.
+ * {@link ImageViewTouchPagerAdapter} to generate the pages that the view shows.
  * <p/>
  * <p>Note this class is currently under early design and
  * development.  The API will likely change in later updates of
@@ -77,7 +78,7 @@ import java.util.Comparator;
  * which is a convenient way to supply and manage the lifecycle of each page.
  * There are standard adapters implemented for using fragments with the ViewPager,
  * which cover the most common use cases.  These are
- * {@link ImagePagerAdapter}; each of these
+ * {@link ImageViewTouchPagerAdapter}; each of these
  * classes have simple code showing how to build a full user interface
  * with them.
  * <p/>
@@ -141,7 +142,7 @@ public class ImageViewPager extends ViewGroup {
 
     private final Rect mTempRect = new Rect();
 
-    private ImagePagerAdapter mAdapter;
+    private PagerAdapter mAdapter;
     private int mCurItem;   // Index of currently displayed page.
     private int mRestoredCurItem = -1;
     private Parcelable mRestoredAdapterState = null;
@@ -343,7 +344,7 @@ public class ImageViewPager extends ViewGroup {
      */
     interface OnAdapterChangeListener {
 
-        public void onAdapterChanged(ImagePagerAdapter oldAdapter, ImagePagerAdapter newAdapter);
+        public void onAdapterChanged(PagerAdapter oldAdapter, PagerAdapter newAdapter);
     }
 
     /**
@@ -414,11 +415,11 @@ public class ImageViewPager extends ViewGroup {
     }
 
     /**
-     * Set a ImagePagerAdapter that will supply views for this pager as needed.
+     * Set a ImageViewTouchPagerAdapter that will supply views for this pager as needed.
      *
      * @param adapter Adapter to use
      */
-    public void setAdapter(ImagePagerAdapter adapter) {
+    public void setAdapter(PagerAdapter adapter) {
         if (mAdapter != null) {
             mAdapter.unregisterDataSetObserver(mObserver);
             mAdapter.startUpdate(this);
@@ -433,7 +434,7 @@ public class ImageViewPager extends ViewGroup {
             scrollTo(0, 0);
         }
 
-        final ImagePagerAdapter oldAdapter = mAdapter;
+        final PagerAdapter oldAdapter = mAdapter;
         mAdapter = adapter;
         mExpectedAdapterCount = 0;
 
@@ -478,9 +479,9 @@ public class ImageViewPager extends ViewGroup {
     /**
      * Retrieve the current adapter supplying pages.
      *
-     * @return The currently registered ImagePagerAdapter
+     * @return The currently registered ImageViewTouchPagerAdapter
      */
-    public ImagePagerAdapter getAdapter() {
+    public PagerAdapter getAdapter() {
         return mAdapter;
     }
 
@@ -867,11 +868,11 @@ public class ImageViewPager extends ViewGroup {
             final ItemInfo ii = mItems.get(i);
             final int newPos = mAdapter.getItemPosition(ii.object);
 
-            if (newPos == ImagePagerAdapter.POSITION_UNCHANGED) {
+            if (newPos == ImageViewTouchPagerAdapter.POSITION_UNCHANGED) {
                 continue;
             }
 
-            if (newPos == ImagePagerAdapter.POSITION_NONE) {
+            if (newPos == ImageViewTouchPagerAdapter.POSITION_NONE) {
                 mItems.remove(i);
                 i--;
 
@@ -973,8 +974,8 @@ public class ImageViewPager extends ViewGroup {
             } catch (Resources.NotFoundException e) {
                 resName = Integer.toHexString(getId());
             }
-            throw new IllegalStateException("The application's ImagePagerAdapter changed the adapter's" +
-                    " contents without calling ImagePagerAdapter#notifyDataSetChanged!" +
+            throw new IllegalStateException("The application's ImageViewTouchPagerAdapter changed the adapter's" +
+                    " contents without calling ImageViewTouchPagerAdapter#notifyDataSetChanged!" +
                     " Expected adapter item count: " + mExpectedAdapterCount + ", found: " + N +
                     " Pager id: " + resName +
                     " Pager class: " + getClass() +

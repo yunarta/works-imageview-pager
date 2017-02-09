@@ -10,23 +10,22 @@ import android.widget.ImageView;
 /**
  * Created by yunarta on 18/9/14.
  */
-public abstract class ImagePagerAdapter extends PagerAdapter {
+public abstract class ZoomableDraweeViewPagerAdapter extends PagerAdapter {
 
     Context mContext;
 
-    SparseArray<ImageViewTouchForPager> mImageViewPagerMap;
+    SparseArray<ZoomableDraweeViewForPager> mImageViewPagerMap;
 
-    public ImagePagerAdapter(Context context) {
+    public ZoomableDraweeViewPagerAdapter(Context context) {
         mContext = context;
-        mImageViewPagerMap = new SparseArray<ImageViewTouchForPager>();
+        mImageViewPagerMap = new SparseArray<ZoomableDraweeViewForPager>();
     }
 
     protected abstract void setupImageView(ImageView imageView, int position);
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        ImageViewTouchForPager imageView = new ImageViewTouchForPager(mContext);
-//        imageView.setDisplayType(ImageViewTouchBase.DisplayType.FIT_TO_SCREEN);
+        ZoomableDraweeViewForPager imageView = new ZoomableDraweeViewForPager(mContext);
 
         mImageViewPagerMap.put(position, imageView);
 
@@ -46,7 +45,7 @@ public abstract class ImagePagerAdapter extends PagerAdapter {
         mImageViewPagerMap.delete(position);
     }
 
-    public ImageViewTouchForPager getImage(int position) {
+    public ZoomableDraweeViewForPager getImage(int position) {
         return mImageViewPagerMap.get(position);
     }
 
@@ -54,7 +53,7 @@ public abstract class ImagePagerAdapter extends PagerAdapter {
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
         super.setPrimaryItem(container, position, object);
 
-        ImageViewTouchForPager pager;
+        ZoomableDraweeViewForPager pager;
 
         pager = mImageViewPagerMap.get(position - 1);
         if (pager != null) {
@@ -73,7 +72,7 @@ public abstract class ImagePagerAdapter extends PagerAdapter {
     }
 
     public boolean allowPageScroll(int position) {
-//        ImageViewTouchForPager imageView = mImageViewPagerMap.get(position);
+//        ZoomableDraweeViewForPager imageView = mImageViewPagerMap.get(position);
 //        return imageView.isHittingEdge(-dx) && imageView.isScrollable();
         return false;
     }
