@@ -33,6 +33,7 @@ import android.os.SystemClock;
 import android.support.v4.os.ParcelableCompat;
 import android.support.v4.os.ParcelableCompatCreatorCallbacks;
 import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.KeyEventCompat;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.PagerAdapter;
@@ -46,6 +47,7 @@ import android.support.v4.widget.EdgeEffectCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.FocusFinder;
+import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -292,6 +294,8 @@ public class ImageViewPager extends ViewGroup {
          * @see ImageViewPager#SCROLL_STATE_SETTLING
          */
         public void onPageScrollStateChanged(int state);
+
+        public void onPageTapped();
     }
 
     /**
@@ -314,6 +318,11 @@ public class ImageViewPager extends ViewGroup {
         @Override
         public void onPageScrollStateChanged(int state) {
             // This space for rent
+        }
+
+        @Override
+        public void onPageTapped() {
+
         }
     }
 
@@ -355,6 +364,8 @@ public class ImageViewPager extends ViewGroup {
 
     }
 
+    GestureDetectorCompat mGestureDetectorCompat;
+
     public ImageViewPager(Context context) {
         super(context);
         initViewPager();
@@ -366,6 +377,58 @@ public class ImageViewPager extends ViewGroup {
     }
 
     void initViewPager() {
+        mGestureDetectorCompat = new GestureDetectorCompat(getContext(), new GestureDetector.OnGestureListener() {
+            @Override
+            public boolean onDown(MotionEvent event) {
+                return false;
+            }
+
+            @Override
+            public void onShowPress(MotionEvent event) {
+
+            }
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent event) {
+                return false;
+            }
+
+            @Override
+            public boolean onScroll(MotionEvent event, MotionEvent event1, float v, float v1) {
+                return false;
+            }
+
+            @Override
+            public void onLongPress(MotionEvent event) {
+
+            }
+
+            @Override
+            public boolean onFling(MotionEvent event, MotionEvent event1, float v, float v1) {
+                return false;
+            }
+        });
+        mGestureDetectorCompat.setOnDoubleTapListener(new GestureDetector.OnDoubleTapListener() {
+            @Override
+            public boolean onSingleTapConfirmed(MotionEvent event) {
+                if (mOnPageChangeListener != null) {
+                    mOnPageChangeListener.onPageTapped();
+                }
+
+                return true;
+            }
+
+            @Override
+            public boolean onDoubleTap(MotionEvent event) {
+                return false;
+            }
+
+            @Override
+            public boolean onDoubleTapEvent(MotionEvent event) {
+                return false;
+            }
+        });
+
         setWillNotDraw(false);
         setDescendantFocusability(FOCUS_AFTER_DESCENDANTS);
         setFocusable(true);
@@ -1798,6 +1861,10 @@ public class ImageViewPager extends ViewGroup {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+        if (mGestureDetectorCompat.onTouchEvent(ev)) {
+            return true;
+        }
+
         /*
          * This method JUST determines whether we want to intercept the motion.
          * If we return true, onMotionEvent will be called and we do the actual

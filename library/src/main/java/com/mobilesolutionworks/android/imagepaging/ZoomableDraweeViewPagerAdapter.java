@@ -1,6 +1,5 @@
 package com.mobilesolutionworks.android.imagepaging;
 
-import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.util.SparseArray;
 import android.view.View;
@@ -12,12 +11,9 @@ import android.widget.ImageView;
  */
 public abstract class ZoomableDraweeViewPagerAdapter extends PagerAdapter {
 
-    Context mContext;
-
     SparseArray<ZoomableDraweeViewForPager> mImageViewPagerMap;
 
-    public ZoomableDraweeViewPagerAdapter(Context context) {
-        mContext = context;
+    public ZoomableDraweeViewPagerAdapter() {
         mImageViewPagerMap = new SparseArray<ZoomableDraweeViewForPager>();
     }
 
@@ -25,11 +21,12 @@ public abstract class ZoomableDraweeViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        ZoomableDraweeViewForPager imageView = new ZoomableDraweeViewForPager(mContext);
+        ZoomableDraweeViewForPager imageView = new ZoomableDraweeViewForPager(container.getContext());
 
         mImageViewPagerMap.put(position, imageView);
 
         ImageViewPager pager = (ImageViewPager) container;
+
         ViewGroup.LayoutParams params = pager.generateDefaultLayoutParams();
         params.width = container.getMeasuredWidth();
         params.height = container.getMeasuredHeight();
