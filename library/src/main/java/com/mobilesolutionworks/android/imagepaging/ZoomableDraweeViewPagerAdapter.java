@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import jp.co.vcube.android.gate.ux.fresco.plugin.zoomable.DefaultZoomableController;
+import jp.co.vcube.android.gate.ux.fresco.plugin.zoomable.ZoomableController;
+
 /**
  * Created by yunarta on 18/9/14.
  */
@@ -22,6 +25,11 @@ public abstract class ZoomableDraweeViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         ZoomableDraweeViewForPager imageView = new ZoomableDraweeViewForPager(container.getContext());
+        ZoomableController c = imageView.getZoomableController();
+        if (c instanceof DefaultZoomableController) {
+            DefaultZoomableController controller = (DefaultZoomableController) c;
+            controller.setMaxScaleFactor(4.0f);
+        }
 
         mImageViewPagerMap.put(position, imageView);
 
