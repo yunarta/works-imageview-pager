@@ -1,7 +1,6 @@
 package com.mobilesolutionworks.android.imagepaging;
 
 import android.content.Context;
-import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.util.AttributeSet;
