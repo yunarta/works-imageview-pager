@@ -44,9 +44,8 @@ retrolambda {
 
 dependencies {
     compile 'com.android.support:support-v4:' + rootProject.ext.supportLibVersion
-//    compile 'it.sephiroth.android.library.imagezoom:imagezoom:2.1.1'
 
-    // Fesco
+    // Fresco
     provided ('com.facebook.fresco:fresco:1.0.1')
     provided ('com.facebook.fresco:drawee:1.0.1')
     provided ('com.facebook.fresco:imagepipeline-base:1.0.1')
@@ -57,5 +56,5 @@ dependencies {
     provided 'com.facebook.fresco:animated-gif:1.0.1'
 
 
-    provided project(':fresco')
+    provided 'jp.co.vcube.android.ux:fresco:1.0.4.2'
 }
