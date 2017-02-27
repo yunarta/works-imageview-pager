@@ -11,6 +11,10 @@ buildscript {
 
 apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'net.ltgt.errorprone'
+apply plugin: 'pmd'
+
+check.dependsOn 'pmd'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -34,6 +38,28 @@ android {
 
         }
     }
+}
+
+configurations.errorprone {
+    resolutionStrategy.force 'com.google.errorprone:error_prone_core:2.0.15'
+}
+
+task pmd(type: Pmd) {
+    ignoreFailures = false
+    ruleSetFiles = files("pmd.xml")
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        html {
+            destination "$project.buildDir/reports/pmd/pmd.html"
+        }
+    }
+    pmd { toolVersion = '5.1.3' }
 }
 
 retrolambda {
