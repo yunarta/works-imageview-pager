@@ -5,6 +5,8 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 
+import com.facebook.drawee.generic.GenericDraweeHierarchy;
+
 import jp.co.vcube.android.gate.ux.fresco.plugin.zoomable.DefaultZoomableController;
 import jp.co.vcube.android.gate.ux.fresco.plugin.zoomable.ZoomableDraweeView;
 
@@ -12,6 +14,10 @@ import jp.co.vcube.android.gate.ux.fresco.plugin.zoomable.ZoomableDraweeView;
  * Created by yunarta on 18/9/14.
  */
 public class ZoomableDraweeViewForPager extends ZoomableDraweeView implements Scrollable {
+
+    public ZoomableDraweeViewForPager(Context context, GenericDraweeHierarchy hierarchy) {
+        super(context, hierarchy);
+    }
 
     public ZoomableDraweeViewForPager(Context context) {
         super(context, (AttributeSet) null);

@@ -1,5 +1,6 @@
 package com.mobilesolutionworks.android.imagepaging;
 
+import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.util.SparseArray;
 import android.view.View;
@@ -24,7 +25,7 @@ public abstract class ZoomableDraweeViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        ZoomableDraweeViewForPager imageView = new ZoomableDraweeViewForPager(container.getContext());
+        ZoomableDraweeViewForPager imageView = createViewPager(container);
         ZoomableController c = imageView.getZoomableController();
         if (c instanceof DefaultZoomableController) {
             DefaultZoomableController controller = (DefaultZoomableController) c;
@@ -43,6 +44,9 @@ public abstract class ZoomableDraweeViewPagerAdapter extends PagerAdapter {
         setupImageView(imageView, position);
         return imageView;
     }
+
+    @NonNull
+    protected abstract ZoomableDraweeViewForPager createViewPager(ViewGroup container);
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object view) {
