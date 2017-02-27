@@ -39,6 +39,7 @@ import android.widget.ImageView;
 import android.widget.OverScroller;
 import android.widget.Scroller;
 
+@SuppressWarnings("all")
 public class ImageViewTouch extends ImageView {
 
     private static final String DEBUG = "DEBUG";

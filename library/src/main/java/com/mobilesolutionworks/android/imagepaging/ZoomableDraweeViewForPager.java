@@ -38,7 +38,9 @@ public class ZoomableDraweeViewForPager extends ZoomableDraweeView implements Sc
     @Override
     public boolean isHittingEdge(int direction) {
         RectF rect = getZoomedRect();
-        if (rect == null) return true;
+        if (rect == null) {
+            return true;
+        }
         if (direction > 0) {
             return (int) rect.right <= getWidth();
         } else {
