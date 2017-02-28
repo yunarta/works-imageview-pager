@@ -134,6 +134,7 @@ public class ImageViewPager extends ViewGroup {
     };
 
     private static final Interpolator sInterpolator = new Interpolator() {
+        @Override
         public float getInterpolation(float t) {
             t -= 1.0f;
             return t * t * t * t * t + 1.0f;
@@ -252,6 +253,7 @@ public class ImageViewPager extends ViewGroup {
     public static final int SCROLL_STATE_SETTLING = 2;
 
     private final Runnable mEndScrollRunnable = new Runnable() {
+        @Override
         public void run() {
             setScrollState(SCROLL_STATE_IDLE);
             populate();
@@ -2518,6 +2520,7 @@ public class ImageViewPager extends ViewGroup {
         }
     }
 
+    @Override
     public boolean canScrollHorizontally(int direction) {
         if (mAdapter == null) {
             return false;
