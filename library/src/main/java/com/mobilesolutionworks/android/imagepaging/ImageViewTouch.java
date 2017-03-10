@@ -1257,7 +1257,7 @@ public class ImageViewTouch extends ImageView {
         }
     }
 
-    private class ZoomVariables {
+    private static class ZoomVariables {
         public float scale;
         public float focusX;
         public float focusY;
