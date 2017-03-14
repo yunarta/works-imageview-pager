@@ -18,7 +18,7 @@ public abstract class ZoomableDraweeViewPagerAdapter extends PagerAdapter {
     SparseArray<ZoomableDraweeViewForPager> mImageViewPagerMap;
 
     public ZoomableDraweeViewPagerAdapter() {
-        mImageViewPagerMap = new SparseArray<ZoomableDraweeViewForPager>();
+        mImageViewPagerMap = new SparseArray<>();
     }
 
     protected abstract void setupImageView(ImageView imageView, int position);
@@ -77,12 +77,6 @@ public abstract class ZoomableDraweeViewPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == object;
-    }
-
-    public boolean allowPageScroll(int position) {
-//        ZoomableDraweeViewForPager imageView = mImageViewPagerMap.get(position);
-//        return imageView.isHittingEdge(-dx) && imageView.isScrollable();
-        return false;
+        return view == object; // NOPMD
     }
 }

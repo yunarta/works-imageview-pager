@@ -18,7 +18,7 @@ public abstract class ImageViewTouchPagerAdapter extends PagerAdapter {
 
     public ImageViewTouchPagerAdapter(Context context) {
         mContext = context;
-        mImageViewPagerMap = new SparseArray<ImageViewTouchForPager>();
+        mImageViewPagerMap = new SparseArray<>();
     }
 
     protected abstract void setupImageView(ImageView imageView, int position);
@@ -68,12 +68,6 @@ public abstract class ImageViewTouchPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == object;
-    }
-
-    public boolean allowPageScroll(int position) {
-//        ImageViewTouchForPager imageView = mImageViewPagerMap.get(position);
-//        return imageView.isHittingEdge(-dx) && imageView.isScrollable();
-        return false;
+        return view == object; // NOPMD
     }
 }
