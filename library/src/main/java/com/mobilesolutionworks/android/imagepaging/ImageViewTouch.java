@@ -574,6 +574,7 @@ public class ImageViewTouch extends ImageView {
 
             case CENTER_INSIDE:
                 scaleX = scaleY = Math.min(1, Math.min(scaleX, scaleY));
+                break;
 
             case FIT_CENTER:
                 scaleX = scaleY = Math.min(scaleX, scaleY);
@@ -1181,7 +1182,7 @@ public class ImageViewTouch extends ImageView {
     }
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    private class CompatScroller {
+    private static class CompatScroller {
         Scroller scroller;
         OverScroller overScroller;
         boolean isPreGingerbread;
