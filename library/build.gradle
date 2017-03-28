@@ -41,7 +41,7 @@ android {
 }
 
 configurations.errorprone {
-    resolutionStrategy.force 'com.google.errorprone:error_prone_core:2.0.15'
+    resolutionStrategy.force 'com.google.errorprone:error_prone_core:2.0.19'
 }
 
 task pmd(type: Pmd) {
