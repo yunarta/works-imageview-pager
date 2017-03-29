@@ -79,7 +79,7 @@ dependencies {
 
     // Need by fresco
     provided 'com.facebook.fresco:fbcore:1.2.0'
-    provided 'com.facebook.fresco:animated-gif:1.1.0'
+    provided 'com.facebook.fresco:animated-gif:1.2.0'
 
     provided 'jp.co.vcube.android.ux:fresco:1.0.7'
 }
