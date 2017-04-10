@@ -91,7 +91,7 @@ import java.util.Comparator;
  * {@sample development/samples/Support13Demos/src/com/example/android/supportv13/app/ActionBarTabsPager.java
  * complete}
  */
-@SuppressWarnings("all")
+
 public class ImageViewPager extends ViewGroup {
 
     private static final String TAG = "ViewPager";
