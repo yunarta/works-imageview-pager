@@ -4,9 +4,6 @@ import android.content.Context;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 
-/**
- * Created by yunarta on 18/9/14.
- */
 public class ImageViewTouchForPager extends ImageViewTouch implements Scrollable {
 
     public ImageViewTouchForPager(Context context) {

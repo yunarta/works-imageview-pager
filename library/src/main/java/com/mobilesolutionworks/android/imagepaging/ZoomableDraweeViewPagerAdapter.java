@@ -10,9 +10,6 @@ import android.widget.ImageView;
 import jp.co.vcube.android.gate.ux.fresco.plugin.zoomable.DefaultZoomableController;
 import jp.co.vcube.android.gate.ux.fresco.plugin.zoomable.ZoomableController;
 
-/**
- * Created by yunarta on 18/9/14.
- */
 public abstract class ZoomableDraweeViewPagerAdapter extends PagerAdapter {
 
     SparseArray<ZoomableDraweeViewForPager> mImageViewPagerMap;

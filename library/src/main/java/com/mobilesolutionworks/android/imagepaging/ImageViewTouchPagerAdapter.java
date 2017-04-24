@@ -7,9 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-/**
- * Created by yunarta on 18/9/14.
- */
 public abstract class ImageViewTouchPagerAdapter extends PagerAdapter {
 
     Context mContext;
