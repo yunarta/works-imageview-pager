@@ -43,5 +43,5 @@ dependencies {
     provided 'com.facebook.fresco:fbcore:1.5.0'
     provided 'com.facebook.fresco:animated-gif:1.5.0'
 
-    provided 'jp.co.vcube.android.ux:fresco:1.0.7'
+    provided 'jp.co.vcube.android.ux:fresco:1.1.0'
 }
