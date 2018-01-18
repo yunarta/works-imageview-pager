@@ -1,10 +1,13 @@
 buildscript {
     repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.fabric.io/public' }
         maven { url 'https://client-ci.vcube.sg:8081/artifactory/blackhole/' }
     }
 
     dependencies {
-        classpath 'com.google.gms:google-services:3.0.0'
+        classpath 'com.google.gms:google-services:3.1.1'
         classpath 'io.fabric.tools:gradle:1.22.1'
     }
 }
