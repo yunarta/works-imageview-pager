@@ -46,5 +46,5 @@ dependencies {
     compileOnly 'com.facebook.fresco:fbcore:1.8.0'
     compileOnly 'com.facebook.fresco:animated-gif:1.8.0'
 
-    compileOnly 'jp.co.vcube.android.ux:fresco:1.2.0'
+    compileOnly 'jp.co.vcube.android.ux:fresco:1.2.1'
 }
